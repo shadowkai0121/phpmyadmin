@@ -1,0 +1,11 @@
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    env_file:
+      - .env
+    entrypoint: ["/docker-entrypoint.sh"]
+    volumes:
+      - "./docker-entrypoint.sh:/docker-entrypoint.sh:ro"
+      - ./certs:/etc/phpmyadmin/certs:ro
+    ports:
+      - "18080:80"
